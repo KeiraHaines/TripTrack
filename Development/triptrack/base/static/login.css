@@ -1,0 +1,73 @@
+/* LOGIN */
+.login {
+    width: 69px; 
+    height: 40px; 
+    left: 33px; 
+    top: 0px; 
+    position: absolute; 
+    text-align: center;
+    color: #E7EFEC;
+    font-size: 30px;
+    font-family: Abel;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+/* Password */
+.password {
+    width: 215px; 
+    height: 30px; 
+    left: 0px; 
+    top: 0px; 
+    position: absolute; 
+    background: #E7EFEC; 
+    border-radius: 25px;
+    color: #84A98C;
+    font-size: 15px;
+    font-family: Abel;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+/* Username */
+.username {
+    width: 215px; 
+    height: 30px; 
+    left: 0px; 
+    top: 0px; 
+    position: absolute; 
+    background: #E7EFEC; 
+    border-radius: 25px;
+    color: #84A98C;
+    font-size: 15px;
+    font-family: Abel;
+    font-weight: 400;
+    word-wrap: break-word;
+}
+
+/* Create New Account */
+.create-new-account {
+    color: #84A98C;
+    font-size: 11px;
+    font-family: Lufga;
+    font-weight: 300;
+    text-decoration: underline;
+    word-wrap: break-word;
+}
+
+/* TripTrack */
+.trip-track {
+    left: 83px; 
+    top: 159px; 
+    position: absolute; 
+    color: #2F3E46; 
+    font-size: 50px; 
+    font-family: Lobster Two; 
+    font-weight: 400; 
+    word-wrap: break-word;
+    color: #2F3E46;
+    font-size: 50px;
+    font-family: Lobster Two;
+    font-weight: 400;
+    word-wrap: break-word
+}

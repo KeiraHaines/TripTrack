@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar Events</title>
+</head>
+<body>
+    <h1>Calendar Events</h1>
+
+    <h2>Add New Event</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add Event</button>
+    </form>
+
+    <h2>Existing Events</h2>
+    <ul>
+        {% for event in events %}
+            <li>{{ event.title }} - {{ event.date }}</li>
+        {% empty %}
+            <li>No events scheduled.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

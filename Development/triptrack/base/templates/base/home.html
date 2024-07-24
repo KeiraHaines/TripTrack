@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TripTrack Home</title>
+    <link href="https://fonts.googleapis.com/css2?family=Abel&family=Lobster+Two&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lufga:wght@300&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            background: #2F3E46; 
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content-wrapper {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mountains-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1;
+        }
+
+        .mountains-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .login-link {
+            color: #84A98C;
+            font-size: 11px;
+            font-family: Lufga;
+            font-weight: 300;
+            background: transparent;
+            word-wrap: break-word;
+            text-decoration: none;
+        }
+
+        .trip-track {
+            left: 28vw; 
+            top: 5vh; 
+            position: absolute; 
+            color: #CAD2C5; 
+            font-size: 50px; 
+            font-family: 'Lobster Two'; 
+            font-weight: 400; 
+            word-wrap: break-word;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <div class="content-wrapper">
+        <div>
+            <img style="width: 100%; height: auto; left: 0; top: 3vh; position: absolute" src="{% static 'bckTop.svg' %}" alt="Clouds" />
+        </div>
+        <div class="trip-track">TripTrack</div>
+        
+        <div class="mountains-container">
+            <img class="mountains-image" src="{% static 'bckBottom.svg' %}" alt="Mountains" />
+        </div>
+    
+            <a href="{% url 'createtripdate' %}" ><img style="width: calc(1800px+(2400-1800)*((100vw - 500px)/(1920-500))); height: 250px; right: 23vw; bottom: 30vh; position: absolute; z-index: 2;" src="{% static 'btnCreateTrip.svg' %}" alt="Logo" /></a>
+            <a href="{% url 'logout' %}" ><img style="width: calc(1800px+(2400-1800)*((100vw - 500px)/(1920-500))); height: 30px; left: 6vw; top: 6vh; position: absolute; z-index: 2;" src="{% static 'Logout.svg' %}" alt="Logo" /></a>
+
+    </div>
+</body>
+</html>
