@@ -2,9 +2,44 @@ from django.db import models
 from django.contrib.auth.models import User
 # Create your models here.
 
-class NewTrip(models.Model):
-    title = models.CharField(max_length=200)
-    date = models.DateField()
+TRANSPORT_CHOICES = [
+        ('car', 'Car'),
+        ('bus', 'Bus'),
+        ('bike', 'Bike'),
+        ('train','Train'),
+        ('plane','Plane'),
+        ('other', 'Other'),
+    ]
+
+class Transport(models.Model):
+    
+    name = models.CharField(max_length=100, choices=TRANSPORT_CHOICES, null=True, blank=True)
 
     def __str__(self):
-        return f"{self.title} on {self.date}"
+        return self.name
+
+class Destination(models.Model):
+    name = models.CharField(max_length=100, null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+
+class newTrip (models.Model):
+
+
+    strTripName = models.CharField(max_length=200)
+    intStartDate = models.DateField()
+    intEndDate = models.DateField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
+
+    def __str__(self):
+        return f"Event {self.id}"
+    
+class Leg (models.Model):
+
+    trip = models.ForeignKey(newTrip, on_delete=models.CASCADE)
+    destination = models.ForeignKey(Destination, on_delete=models.SET_NULL, null=True, blank=True)
+    transport = models.ForeignKey(Transport, on_delete=models.SET_NULL, null=True, blank=True)
+
+    def __str__(self):
+        return f"Leg: {self.id}"

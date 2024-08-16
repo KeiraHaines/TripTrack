@@ -35,6 +35,7 @@
             width: 100%;
             height: auto;
             display: block;
+            z-index: -1;
         }
 
         /* Existing styles... */
@@ -50,6 +51,7 @@
             font-family: Abel;
             font-weight: 400;
             word-wrap: break-word;
+            z-index: 10;
         }
 
         /* Password */
@@ -116,7 +118,7 @@
         <div class="trip-track">TripTrack</div>
         <img style="width: 75%; height: auto; left: 13vw; top: 25vh; position: absolute" src="{% static 'Plane.jpg' %}" />
         
-        <div class="mountains-container">
+        <div style="z-index: -1;" class="mountains-container">
             <img class="mountains-image" src="{% static 'Mountains.svg' %}" alt="Mountains" />
         </div>
         

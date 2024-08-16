@@ -28,29 +28,44 @@ class CreateUserForm(UserCreationForm):
             user.save()
         return user
 
-class EventFormTrans(forms.ModelForm):
+class TripForm(forms.ModelForm):
     destinations = forms.ModelMultipleChoiceField(
         queryset=Destination.objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+        required=False
+    )
+
+    transports = forms.ModelMultipleChoiceField(
+        queryset=Transport.objects.all(),
         widget=forms.CheckboxSelectMultiple,
         required=False
     )
     
     class Meta:
         model = Leg
-        fields = ['destination', 'transport']
+        fields = ['transports', 'destinations']
         widgets = {
-            'destination': forms.TextInput(attrs={'placeholder': 'Destination'}),
-            'transport': forms.Select()  # Corrected to use Select widget for the ForeignKey field
+            'destination': forms.TextInput(attrs={'placeholders':'    Destination'}),
+            'transport': forms.CharField()
         }
 
-
-class newTripForm(forms.ModelForm):
-    
+class EventForm(forms.ModelForm):
+   
     class Meta:
         model = newTrip
-        fields = ['strTripName', 'intStartDate', 'intEndDate']
+        fields = ['title', 'start_date', 'end_date']
         widgets = {
-            'strTripName': forms.TextInput(attrs={'placeholder':'    Name of Trip'}),
-            'intStartDate': forms.DateInput(attrs={'type': 'date'}),
-            'intEndDate': forms.DateInput(attrs={'type': 'date'}),
+            'title': forms.TextInput(attrs={'placeholder':'    Name of Trip'}),
+            'start_date': forms.DateInput(attrs={'type': 'date'}),
+            'end_date': forms.DateInput(attrs={'type': 'date'}),
         }
+
+class EventForm2(forms.ModelForm):
+   
+    trip = EventForm
+
+    class Meta:
+        model = Leg
+        fields = ['trip']
+
+  
