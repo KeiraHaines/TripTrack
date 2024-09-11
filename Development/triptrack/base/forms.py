@@ -29,19 +29,24 @@ class CreateUserForm(UserCreationForm):
         return user
 
 class EventFormTrans(forms.ModelForm):
-    destinations = forms.ModelMultipleChoiceField(
-        queryset=Destination.objects.all(),
-        widget=forms.CheckboxSelectMultiple,
-        required=False
+    destination = forms.CharField(
+        max_length=49,  # Ensure this matches the max_length in the model
+        widget=forms.TextInput(attrs={'placeholder': 'Destination', 'maxlength': '49'}),
+        required=True
     )
-    
+    transport = forms.ModelChoiceField(
+        queryset=Transport.objects.all(),  # Assuming Transport is a model
+        widget=forms.Select(),
+        required=True  # Make this field compulsory
+    )
+
     class Meta:
         model = Leg
         fields = ['destination', 'transport']
-        widgets = {
-            'destination': forms.TextInput(attrs={'placeholder': 'Destination'}),
-            'transport': forms.Select()  # Corrected to use Select widget for the ForeignKey field
-        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['transport'].empty_label = None
 
 
 class newTripForm(forms.ModelForm):
@@ -54,3 +59,7 @@ class newTripForm(forms.ModelForm):
             'intStartDate': forms.DateInput(attrs={'type': 'date'}),
             'intEndDate': forms.DateInput(attrs={'type': 'date'}),
         }
+
+class BaggageCheckForm(forms.Form):
+    number = forms.DecimalField(label='Enter a Number', max_digits=5, decimal_places=2, required=True)
+

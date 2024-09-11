@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'base',
     'colorfield',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [

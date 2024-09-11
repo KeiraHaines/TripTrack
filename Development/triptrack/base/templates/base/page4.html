@@ -1,0 +1,429 @@
+<!-- page4.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swipeable Page 4</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Abel&family=Lobster+Two&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lufga:wght@300&display=swap" rel="stylesheet">
+    <style>
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #2F3E46;
+        color: #ecf0f1;
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+    }
+    
+    .container {
+        width: 100%;
+        max-width: 400px;
+        text-align: center;
+    }
+    
+    .header {
+        margin-bottom: 20px;
+        position: relative;
+    }
+    
+    .triptrack-logo {
+        color: #CAD2C5; 
+        font-size: 50px; 
+        font-family: 'Lobster Two'; 
+        font-weight: 400; 
+        word-wrap: break-word;
+        z-index: -1;
+        margin-bottom: 20px;
+        top: 0;
+    }
+    
+    .trip-title {
+        font-size: 1.2rem;
+        font-family: 'Lufga';
+        margin-bottom: 20px;
+        padding-top: 185px;
+    }
+    
+    .itinerary {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 5px;
+    }
+    
+    .location {
+        font-size: 1rem;
+        font-family: 'Lufga';
+        margin: 5px 0;
+    }
+    
+    .transport {
+        font-size: 0.8rem;
+        font-family: 'Lufga';
+        color: #95a5a6;
+        margin: 2px 0 10px;
+    }
+    
+    .dotted-line {
+        border-left: 2px dotted #95a5a6;
+        height: 20px;
+        margin: 5px 0;
+    }
+    
+    .add-button {
+        background-color: #84A98C;
+        color: #ecf0f1;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-family: 'Lufga';
+        cursor: pointer;
+        margin-bottom: 10px;
+        text-decoration: none;
+        display: inline-block;
+    }
+    
+    .checklist {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    
+    .checklist h2 {
+        font-size: 1.2rem;
+        font-family: 'Lufga';
+        margin-bottom: 10px;
+    }
+    
+    .checklist-item input[type="checkbox"] {
+        margin-right: 50px;
+    }
+
+    .checklist-item {
+        display: flex;
+        align-items: center; /* Align items vertically */
+        justify-content: space-between; /* Distribute space evenly */
+        margin-bottom: 10px;
+    }
+
+    .checklist-item form {
+        display: inline-flex;
+        align-items: center;
+        margin-right: 10px;
+    }
+
+    .checklist-item label {
+        display: inline-flex;
+        align-items: center;
+        font-size: 0.9rem;
+        font-family: 'Lufga';
+    }
+
+    .checklist-item button[type="submit"] {
+        background-color: #84A98C;
+        color: #ecf0f1;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        font-family: 'Lufga';
+        cursor: pointer;
+        margin-left: 10px;
+    }
+    
+    .add-item {
+        display: flex;
+        margin-top: 15px;
+        padding-bottom: 10px;
+    }
+    
+    .add-item input[type="text"] {
+        flex-grow: 1;
+        padding: 8px;
+        border: none;
+        border-radius: 4px 0 0 4px;
+        font-family: 'Lufga';
+        color: #84A98C;
+        background-color: #E7EFEC;
+    }
+    
+    .add-item button {
+        background-color: #84A98C;
+        font-family: 'Lufga';
+        color: #ecf0f1;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 0 4px 4px 0;
+        cursor: pointer;
+    }
+    
+    .luggage-weight {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    
+    .luggage-weight h2 {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+        font-family: 'Lufga';
+    }
+
+    
+    .luggage-weight input[type="text"] {
+        flex-grow: 1;
+        padding: 8px;
+        border: none;
+        border-radius: 4px 4px 4px 4px;
+        font-family: 'Lufga';
+        color: #84A98C;
+        background-color: #E7EFEC;
+    }
+    
+    .luggage-weight button {
+        background-color: #84A98C;
+        color: #ecf0f1;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 4px 4px 4px 4px;
+        cursor: pointer;
+        font-family: 'Lufga';
+    }
+    
+    .luggage-weight h1 {
+        font-size: 0.9rem;
+        font-family: 'Lufga';
+    }
+    
+    .info-buttons {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding-bottom: 100px;
+    }
+    
+    .info-button {
+        background-color: #34495e;
+        color: #ecf0f1;
+        border: none;
+        padding: 10px;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        cursor: pointer;
+        width: 48%;
+        text-decoration: none;
+    }
+    
+    .background-image {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 150px;
+        background-image: url('{% static "bckBottom.svg" %}');
+        background-size: cover;
+        background-position: bottom;
+        z-index: -1;
+    }
+    
+    /* Icons */
+    .icon {
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        margin-right: 5px;
+        vertical-align: middle;
+    }
+    
+    .icon-sun {
+        background: yellow;
+        border-radius: 50%;
+    }
+    
+    .icon-plane, .icon-car {
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        margin-right: 5px;
+    }
+    
+    .icon-bag {
+        padding-top:10px;
+    }
+
+    .icon-globe {
+        color: #3498db;
+        padding-right: 10px;
+    }
+    
+    .logout-button {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+    }
+    
+    .clouds-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: -1;
+    }
+
+    .trees-container {
+        position: absolute;
+        bottom: 0;
+        /* left: 0; */
+        width: 110%;
+        z-index: -1;
+        pointer-events: none;
+    }
+
+    .trees-image {
+        width: 100%;
+        height: 100%;
+        height: auto;
+        display: block;
+    }
+    
+    .swiper-pagination-bullet {
+        background-color: #84A98C; /* Bullet color */
+    }
+    
+    .swiper-pagination-bullet-active {
+        background-color: #CAD2C5; /* Active bullet color */
+    }
+
+    .swiper-container {
+            height: 100vh;
+            width: 100%;
+            /* overflow: hidden; */
+        }
+
+    .swiper-slide {
+        padding-top: 335px;
+        padding-bottom: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+</head>
+<body>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="container">
+                    <div class="header">
+                        <a href="{% url 'logout' %}" class="logout-button">
+                            <img style="width: 30px; height: 30px;" src="{% static 'Logout.svg' %}" alt="Logout Button" />
+                        </a>
+                        <img class="clouds-image" src="{% static 'bckTop.svg' %}" alt="Clouds" />
+                        <h1 class="triptrack-logo">TripTrack</h1>
+                        <p class="trip-title">{{ trip.strTripName }} - {{ trip.intStartDate }}</p>
+                    </div>
+
+                    <div class="itinerary">
+                        
+                        {% for leg in legs %}
+                            {% if leg.transport == "" %}
+                                <div class="transport">no transport</div>
+                            {% else %}
+                                <div class="transport">{{ leg.transport.name }}</div>
+                            {% endif %}
+                            <div class="dotted-line"></div>
+                            <div class="location">{{ leg.destination.name }}</div>
+                            <br/>
+                        {% endfor %}
+                    </div>
+
+                    <a href="{% url 'createTripTwo' %}" class="add-button">Add Transport or Location</a>
+
+                    <div class="checklist">
+                        <h2>Document Checklist:</h2>
+                    
+                        <form method="POST" action="{% url 'todo1' %}" class="add-item">
+                            {% csrf_token %}
+                            <input type="text" name="title" placeholder="Item">
+                            <button type="submit">Add</button>
+                        </form>
+                    
+                        {% for item in checklist %}
+                            <div class="checklist-item">
+                                <form method="POST" action="{% url 'toggle1' item.id %}">
+                                    {% csrf_token %}
+                                    <input type="checkbox" id="item-{{ item.id }}" {% if item.completed %}checked{% endif %} onclick="this.form.submit();">
+                                    <label for="item-{{ item.id }}">
+                                        <img class="icon-globe" src="{% static 'globe-icon.svg' %}" alt="Globe">
+                                        {{ item.title }}
+                                    </label>
+                                </form>
+                                <form method="POST" action="{% url 'delete1' item.id %}">
+                                    {% csrf_token %}
+                                    <button type="submit">Delete</button>
+                                </form>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="luggage-weight">
+                        <h2>Check Luggage Weight</h2>
+                        <form method="POST" action="{% url 'baggage-check1' %}">
+                            {% csrf_token %}
+                            <input type="text" name="number" placholder="weight (kgs)" />
+                            <button type="submit">Check Baggage</button>
+                        </form>
+                        
+                        {% if data == True %}
+                            <img class="icon-bag" src="{% static 'tick.svg' %}" alt="Globe">
+                            <h1>You are under the Limit</h1>
+                            <!-- <pre>{{ data }}</pre> -->
+                        {% endif %}
+                        {% if data == False %}
+                            <img class="icon-bag" src="{% static 'cross.svg' %}" alt="Globe">
+                            <h1>You are over the Limit</h1>
+                            <!-- <pre>{{ data }}</pre> -->
+                        {% endif %}
+                    </div>
+
+                    <div class="info-buttons">
+                        <a href="{% url 'prodPage' %}" style="padding-left: 50px;"><img src="{% static 'prodIcon.svg' %}"/></a>
+                        <a href="{% url 'docPage' %}" style="padding-right: 50px;"><img src="{% static 'docIcon.svg' %}"/></a>
+                    </div>
+                </div>
+
+                <div class="trees-container"><img src="{% static 'trees.svg' %}" alt="trees" class="trees-image"/></div>
+            </div>
+            <div class="swiper-slide"></div>
+        </div>
+
+    </div>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            pagination: {
+                el: '.swiper-pagination',
+            },
+            direction: 'horizontal',
+            loop: false,
+            threshold: 20,
+        });
+
+        swiper.on('slideChange', function () {
+            if (swiper.activeIndex === 1) { // If on the second slide
+                window.location.href = "{% url 'createButton' %}";
+            }
+        });
+    </script>
+</body>
+</html>

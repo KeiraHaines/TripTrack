@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Checklist</title>
+</head>
+<body>
+    <h1>Checklist</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="title" placeholder="New item">
+        <button type="submit">Add</button>
+    </form>
+
+    <ul>
+        {% for item in items %}
+            <li>
+                <form method="POST" action="{% url 'toggle' item.id %}">
+                    {% csrf_token %}
+                    <input type="checkbox" {% if item.completed %}checked{% endif %} onclick="this.form.submit();">
+                    {{ item.title }}
+                </form>
+                <form method="POST" action="{% url 'delete' item.id %}" style="display:inline;">
+                    {% csrf_token %}
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

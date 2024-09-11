@@ -1,0 +1,491 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Event</title>
+    <link href="https://fonts.googleapis.com/css2?family=Abel&family=Lobster+Two&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lufga:wght@300&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            background: #2F3E46; 
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .content-wrapper {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mountains-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: -1;
+        }
+
+        .mountains-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .login-link {
+            color: #84A98C;
+            font-size: 11px;
+            font-family: Lufga;
+            font-weight: 300;
+            background: transparent;
+            word-wrap: break-word;
+            text-decoration: none;
+        }
+
+        .trip-track {
+            color: #CAD2C5; 
+            font-size: 40px; 
+            font-family: 'Lobster Two'; 
+            font-weight: 400; 
+            word-wrap: break-word;
+            z-index: -1;
+            margin-bottom: 20px;
+            top: 0;
+        }
+
+        .trip-name {
+            color: #84A98C;
+            width: 215px; 
+            height: 30px; 
+            background: #E7EFEC; 
+            border-radius: 25px;
+            font-size: 15px;
+            font-family: Abel;
+            font-weight: 400;
+            word-wrap: break-word;
+            border: none;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.10) inset;
+        }   
+
+        .create-event {
+            color: #ffffff;
+            font-size: 16px;
+            font-family: Lufga;
+            font-weight: 300;
+            background: transparent;
+            word-wrap: break-word;
+        }
+
+        form {
+            display: contents;
+            flex-direction: column;
+            align-items: center;
+            z-index: 2;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        input[type="text"], input[type="date"], textarea {
+            width: 215px;
+            padding: 5px;
+            margin-top: 5px;
+            height: 30px; 
+            background: #E7EFEC;
+            border-radius: 25px;
+            color: #84A98C; 
+            font-size: 15px; 
+            font-family: Abel; 
+            font-weight: 400; 
+            word-wrap: break-word;
+            z-index: 10; 
+            border: none;
+        }
+
+        button {
+            width: 175px; 
+            height: 30px;  
+            background: #84A98C; 
+            box-shadow: 5px 4px 4px rgba(0, 0, 0, 0.25); 
+            border-radius: 90px;
+            text-align: center; 
+            color: white; 
+            font-size: 16px; 
+            font-family: Lufga; 
+            font-weight: 300; 
+            word-wrap: break-word;
+            z-index: 5;
+            margin-top: 20px;
+            margin-bottom: 100px;
+            border: none;
+            
+        }
+
+        .errorlist {
+            color: red;
+            list-style-type: none;
+            padding: 0;
+            text-align: center;
+            font-family: Lufga;
+        }
+
+        .dropdown {
+            width: 75%;
+            margin-bottom: 5px;
+        }
+
+        .dropdown select {
+            display: none;
+            z-index: 1;
+        }
+
+        .dropdown-btn {
+            background-color: #84A98C;
+            color: white;
+            padding: 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            font-family: Lufga;
+            z-index: 1;
+        }
+
+        .dropdown-content {
+            /* display: none;
+            position: absolute; */
+            background-color: #52796F;
+            /* width: 100%; */
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            /* z-index: 1; */
+            margin-top: 5px;
+            /* overflow: ; */
+            max-height: 300px;
+            font-family: Lufga;
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 12px;
+            text-decoration: none;
+            display: block;
+            font-size: 14px;
+            font-family: Lufga;
+            z-index: 1;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #2F3E46;
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+            font-family: Lufga;
+            z-index: 1;
+        }
+
+        .dropdown-btn:after {
+            content: '\25BC';
+            font-size: 0.7em;
+            margin-left: 5px;
+            font-family: Lufga;
+            z-index: 1;
+        }
+
+        .icon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            vertical-align: middle;
+        }
+
+        .submitted-data {
+            width: 100%;
+            max-width: 100px;
+            color: #ffffff;
+            font-size: 16px;
+            font-family: Lufga;
+            font-weight: 300;
+            word-wrap: break-word;
+            margin-bottom: 10px;
+            z-index: 10;
+            /* background: rgba(47, 62, 70, 0.8); */
+            /* padding: 20px; */
+            list-style-type: none;
+            top: 5vh;
+            /* position: absolute; */
+            /* border-radius: 15px; */
+            /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+        }
+
+        .submitted-data h3 {
+            color: #ffffff;
+            font-size: 24px;
+            /* margin-bottom: 15px; */
+            text-align: center;
+            font-family: Lufga;
+        }
+
+        .details-container {
+            display: flex;
+            justify-content: space-between;
+            top: 5vh;
+        }
+
+        .details-column {
+            width: 48%;
+        }
+
+        .submitted-data strong {
+            color: #ffffff;
+            display: block;
+            /* margin-bottom: 10px; */
+            font-size: 18px;
+            font-family: Lufga;
+        }
+
+        .submitted-data ul {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            list-style-type: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .submitted-data li {
+            margin-bottom: 5px;
+            margin-top: 5px;
+            padding: 5px;
+            background: rgba(132, 169, 140, 0.1);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;  /* Center the content horizontally */
+            font-family: Lufga;
+            color: #ffff;
+        }
+
+        .separator {
+            width: 50%;
+            display: block;
+            margin: 0 auto 10px auto;  /* Center the line horizontally */
+            fill: #84A98C;
+            opacity: 0.5;
+        }
+
+        #btnSave {
+            position: relative;
+            z-index: 10;
+            transition: margin-top 0.3s ease;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="content-wrapper">
+
+        <div>
+            <div class="trip-track" style="font-size: 50px; width: 100%; height: auto; left: 13%; top: 3vh; position: absolute; z-index:-1;">Create New Trip</div>
+            <img style="width: 115%; height: auto; right: 8vw; top: 3vh; position: relative; z-index:-1;" src="{% static 'PlaneTrip.svg' %}" alt="Clouds" />
+        </div>       
+
+        {% if legs %}
+        <div class="submitted-data" style="z-index:1">
+            <div class="details-container">
+                <div class="details-column">
+                    <ul>
+                        <img style="width: 8px; opacity: 0;" src="{% static 'Line.svg' %}"/>
+
+                        {% for leg in legs %}
+                            <li>
+                                {{ leg.destination.name }}
+                            </li>
+                            
+                            {% if not forloop.last %}
+                                <img style="width: 10px" src="{% static 'Line.svg' %}"/>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="details-column">
+                    <ul>
+                        
+                        {% for leg in legs %}
+                            <li>
+                                {{ leg.transport.name }}
+                            </li>
+                            
+                            {% if not forloop.last %}
+                                <img style="width: 10px; opacity: 0;" src="{% static 'Line.svg' %}"/>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% else %}
+            <p>No legs found for this trip.</p>
+        {% endif %}
+
+        <form action="" method="POST">
+            {% csrf_token %}
+            
+            {{ form.non_field_errors }}
+        
+            <div class="form-container">
+                <div class="input-group">
+                    <label class="create-event" for="{{ form.destination.id_for_label }}">Enter Trip Location:</label>
+                    {{ form.destination }}
+                    {{ form.destination.errors }}
+                </div>
+        
+                <div class="dropdown">
+                    <label for="form.transport.id_for_label">
+                        <div class="dropdown-btn">
+                            <span>Choice of Transport</span>
+                        </div>
+                        <select name="transport" id="transport">
+                            {% for value, choice in form.fields.transport.choices %}
+                                <option value="{{ value }}">{{ choice }}</option>
+                            {% endfor %}
+                        </select>
+                        <div class="dropdown-content">
+                            {% for value, choice in form.fields.transport.choices %}
+                                <a href="#" data-value="{{ value }}">
+                                    <div>
+                                        <div class="icon">
+                                            {% if choice == 'car' %}
+                                            <img src="{% static 'car.svg' %}" width="100%" height="100%">
+                                            {% elif choice == 'plane' %}
+                                            <img src="{% static 'icoplane.svg' %}" width="100%" height="100%">
+                                            {% elif choice == 'train' %}
+                                            <img src="{% static 'bus.svg' %}" width="100%" height="100%">
+                                            {% elif choice == 'bike' %}
+                                            <img src="{% static 'Bicycle.svg' %}" width="100%" height="100%">
+                                            {% endif %}
+                                        </div>
+                                        
+                                            {{ choice }}
+                                        
+                                    </div>
+                                    
+                                </a>
+                            {% endfor %}
+                        </div>
+                        {{ form.transport }}
+                        {{ form.transport.errors }}
+                    </label>
+                </div>
+        
+                <button type="submit" id="btnSave">Create Event</button>
+            </div>
+        </form>
+        
+        <div class="mountains-container">
+            <img class="mountains-image" src="{% static 'bckBottom.svg' %}" alt="Mountains" />
+        </div>
+    
+        <a href="{% url 'logout' %}" style="position: absolute; top: 6vh; right: 6vw; z-index: 2;">
+            <img style="width: calc(1800px+(2400-1800)*((100vw - 500px)/(1920-500))); height: 30px;" src="{% static 'Logout.svg' %}" alt="Logo" />
+        </a>
+        <a href="{% url 'createButton' %}" style="position: absolute; top: 6vh; left: 6vw; z-index: 2;">
+            <img style="width: calc(1800px+(2400-1800)*((100vw - 500px)/(1920-500))); height: 30px;" src="{% static 'Return.svg' %}" alt="Logo" />
+        </a>
+    </div>
+
+    <script>
+        
+        document.addEventListener('DOMContentLoaded', function() {
+        const select = document.querySelector('.dropdown select');
+        const btn = document.querySelector('.dropdown-btn');
+        const options = document.querySelectorAll('.dropdown-content a');
+        const dropdownContent = document.querySelector('.dropdown-content');
+        const btnSave = document.getElementById('btnSave');
+
+        // Set initial text of button to match selected option
+        btn.querySelector('span').textContent = select.options[select.selectedIndex].textContent;
+
+        function adjustButtonPosition() {
+            const dropdownRect = dropdownContent.getBoundingClientRect();
+            const buttonRect = btnSave.getBoundingClientRect();
+            const topOffset = dropdownRect.bottom - buttonRect.top + 20; // 20px extra space
+            
+            if (dropdownContent.style.display === 'block' && topOffset > 0) {
+                btnSave.style.marginTop = `${topOffset}px`;
+            } else {
+                btnSave.style.marginTop = '20px'; // Default margin
+            }
+        }
+
+        options.forEach(option => {
+            option.addEventListener('click', function(e) {
+                e.preventDefault();
+                const value = this.getAttribute('data-value');
+                const text = this.textContent;
+                
+                btn.querySelector('span').textContent = text;
+                select.value = value;
+                
+                const event = new Event('change', { bubbles: true });
+                select.dispatchEvent(event);
+                
+                dropdownContent.style.display = 'none';
+                adjustButtonPosition();
+            });
+        });
+
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.dropdown')) {
+                dropdownContent.style.display = 'none';
+                adjustButtonPosition();
+            }
+        });
+
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+            adjustButtonPosition();
+        });
+
+        // Adjust button position on window resize
+        window.addEventListener('resize', adjustButtonPosition);
+
+        // Initial adjustment
+        adjustButtonPosition();
+    });
+        
+    </script>
+</body>
+</html>
