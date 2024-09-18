@@ -5,9 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Information</title>
+    <!-- Google Fonts import -->
     <link href="https://fonts.googleapis.com/css2?family=Abel&family=Lobster+Two&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lufga:wght@300&display=swap" rel="stylesheet">
     <style>
+        /* CSS styles */
+        
+        /* General body styling */
         body { 
             background: #2F3E46; 
             margin: 0;
@@ -17,6 +21,7 @@
             flex-direction: column;
         }
 
+        /* Form container styling */
         .form-container {
             display: flex;
             flex-direction: column;
@@ -27,6 +32,7 @@
             position: relative;
         }
 
+        /* Main content wrapper styling */
         .content-wrapper {
             flex: 1;
             position: relative;
@@ -37,6 +43,7 @@
             justify-content: center;
         }
 
+        /* Mountains container positioning */
         .mountains-container {
             position: absolute;
             bottom: 0;
@@ -45,12 +52,14 @@
             z-index: -1;
         }
 
+        /* Mountains image styling */
         .mountains-image {
             width: 100%;
             height: auto;
             display: block;
         }
 
+        /* Login link styling */
         .login-link {
             color: #84A98C;
             font-size: 11px;
@@ -61,6 +70,7 @@
             text-decoration: none;
         }
 
+        /* TripTrack title styling */
         .trip-track {
             color: #CAD2C5; 
             font-size: 40px; 
@@ -72,6 +82,7 @@
             top: 0;
         }
 
+        /* Trip name input styling */
         .trip-name {
             color: #84A98C;
             width: 215px; 
@@ -86,6 +97,7 @@
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.10) inset;
         }   
 
+        /* Create event text styling */
         .create-event {
             color: #ffffff;
             font-size: 16px;
@@ -95,6 +107,7 @@
             word-wrap: break-word;
         }
 
+        /* Form styling */
         form {
             display: contents;
             flex-direction: column;
@@ -102,12 +115,14 @@
             z-index: 2;
         }
 
+        /* Label styling */
         label {
             display: block;
             margin-top: 10px;
             text-align: center;
         }
 
+        /* Input field styling */
         input[type="text"], input[type="date"], textarea {
             width: 215px;
             padding: 5px;
@@ -124,6 +139,7 @@
             border: none;
         }
 
+        /* Button styling */
         button {
             width: 175px; 
             height: 30px;  
@@ -140,9 +156,9 @@
             margin-top: 20px;
             margin-bottom: 100px;
             border: none;
-            
         }
 
+        /* Error list styling */
         .errorlist {
             color: red;
             list-style-type: none;
@@ -151,6 +167,7 @@
             font-family: Lufga;
         }
 
+        /* Dropdown styling */
         .dropdown {
             width: 75%;
             margin-bottom: 5px;
@@ -176,15 +193,10 @@
         }
 
         .dropdown-content {
-            /* display: none;
-            position: absolute; */
             background-color: #52796F;
-            /* width: 100%; */
             border-radius: 10px;
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-            /* z-index: 1; */
             margin-top: 5px;
-            /* overflow: ; */
             max-height: 300px;
             font-family: Lufga;
         }
@@ -218,6 +230,7 @@
             z-index: 1;
         }
 
+        /* Icon styling */
         .icon {
             display: inline-block;
             width: 20px;
@@ -228,6 +241,7 @@
             vertical-align: middle;
         }
 
+        /* Submitted data styling */
         .submitted-data {
             width: 100%;
             max-width: 100px;
@@ -238,19 +252,11 @@
             word-wrap: break-word;
             margin-bottom: 10px;
             z-index: 10;
-            /* background: rgba(47, 62, 70, 0.8); */
-            /* padding: 20px; */
-            list-style-type: none;
-            top: 5vh;
-            /* position: absolute; */
-            /* border-radius: 15px; */
-            /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
         }
 
         .submitted-data h3 {
             color: #ffffff;
             font-size: 24px;
-            /* margin-bottom: 15px; */
             text-align: center;
             font-family: Lufga;
         }
@@ -268,7 +274,6 @@
         .submitted-data strong {
             color: #ffffff;
             display: block;
-            /* margin-bottom: 10px; */
             font-size: 18px;
             font-family: Lufga;
         }
@@ -291,27 +296,28 @@
             border-radius: 5px;
             display: flex;
             align-items: center;
-            justify-content: center;  /* Center the content horizontally */
+            justify-content: center;
             font-family: Lufga;
             color: #ffff;
         }
 
+        /* Separator styling */
         .separator {
             width: 50%;
             display: block;
-            margin: 0 auto 10px auto;  /* Center the line horizontally */
+            margin: 0 auto 10px auto;
             fill: #84A98C;
             opacity: 0.5;
         }
 
+        /* Save button styling */
         #btnSave {
             position: relative;
             z-index: 10;
             transition: margin-top 0.3s ease;
         }
-        /* Your existing styles */
 
-        /* Additional styles for centering */
+        /* Center container styling */
         .center-container {
             display: flex;
             flex-direction: column;
@@ -323,13 +329,13 @@
             font-family: Lufga;
             font-weight: 300;
             word-wrap: break-word;
-            margin: 20px auto; /* Adjust as necessary */
+            margin: 20px auto;
             width: 100%;
-            max-width: 400px; /* Restrict maximum width */
+            max-width: 400px;
         }
 
         .center-container p {
-            margin-bottom: 40px; /* Adjust spacing between text and button */
+            margin-bottom: 40px;
         }
 
         .center-container a {
@@ -352,31 +358,34 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto; /* Center the button */
+            margin: 0 auto;
         }
-
     </style>
 </head>
 
 <body>
     <div class="content-wrapper">
+        <!-- Header section -->
         <div>
             <div class="trip-track" style="font-size: 50px; width: 100%; height: auto; left: 13%; top: 3vh; position: absolute; z-index:-1;">Create New Trip</div>
             <img style="width: 115%; height: auto; right: 8vw; top: 0vh; position: relative; z-index:-1;" src="{% static 'PlaneTrip.svg' %}" alt="Clouds" />
         </div>     
         
+        <!-- Main content section -->
         <div class="center-container">
-            <p>A guide to what you can and can’t bring in to the country. When you’re travelling overseas or importing items, you need to know that some items can’t be brought back with you and for others you need to get permission.</p>
+            <p>A guide to what you can and can't bring in to the country. When you're travelling overseas or importing items, you need to know that some items can't be brought back with you and for others you need to get permission.</p>
             <div><img src="{% static 'ProdFun.svg' %}"/></div>
-            <a href="https://www.abf.gov.au/entering-and-leaving-australia/can-you-bring-it-in/bring-on-a-plane">
-                <button>Click here for details</button>
+            <a class="productLink" href="https://www.abf.gov.au/entering-and-leaving-australia/can-you-bring-it-in/bring-on-a-plane">
+                <button class="btnProductInfo">Click here for details</button>
             </a>
         </div>
 
+        <!-- Mountains background -->
         <div class="mountains-container">
             <img class="mountains-image" src="{% static 'bckBottom.svg' %}" alt="Mountains" />
         </div>
     
+        <!-- Navigation links -->
         <a href="{% url 'logout' %}" style="position: absolute; top: 6vh; right: 6vw; z-index: 2;">
             <img style="width: calc(1800px+(2400-1800)*((100vw - 500px)/(1920-500))); height: 30px;" src="{% static 'Logout.svg' %}" alt="Logo" />
         </a>

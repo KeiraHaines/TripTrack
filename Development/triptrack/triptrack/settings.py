@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+# Note: This application is running on HTTP as thsi is running on a local server and I do not have the funds to purchase HTTPS
+
 from pathlib import Path
 import os
 
@@ -21,6 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
+
+# Used to provide cryptographic signing for sessions, cookies, and other security-related features.
+# Used in password reset tokens and other security-critical parts of Django.
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-@be+gr((939i36x9*f@&0l^!klkwjp%)@v^_((29$8w#g6mtwk'
 
@@ -44,6 +49,13 @@ INSTALLED_APPS = [
     'rest_framework'
 ]
 
+# SecurityMiddleware: Handles several security enhancements for the request/response cycle.
+# SessionMiddleware: Enables session support for the application.
+# CommonMiddleware: Handles common operations like setting the Content-Length header.
+# CsrfViewMiddleware: Adds protection against Cross Site Request Forgeries.
+# AuthenticationMiddleware: Associates users with requests using sessions.
+# MessageMiddleware: Enables cookie- and session-based message support.
+# XFrameOptionsMiddleware: Protects against clickjacking attacks.
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -88,6 +100,22 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
+
+# UserAttributeSimilarityValidator:
+# Checks if the password is too similar to the user's attributes (like username, first name, last name, email).
+# Helps prevent passwords that are easily guessable based on user information.
+
+# MinimumLengthValidator:
+# Ensures the password meets a minimum length requirement.
+# By default, it requires passwords to be at least 8 characters long, but this can be customized.
+
+# CommonPasswordValidator:
+# Checks if the password is not a commonly used password.
+# It uses a list of 20,000 common passwords to perform this check.
+
+# NumericPasswordValidator:
+# Ensures that the password is not entirely numeric.
+# Prevents simple passwords like "12345678".
 
 AUTH_PASSWORD_VALIDATORS = [
     {

@@ -5,9 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document Information</title>
+    <!-- Google Fonts imports -->
     <link href="https://fonts.googleapis.com/css2?family=Abel&family=Lobster+Two&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lufga:wght@300&display=swap" rel="stylesheet">
     <style>
+        /* Base styles for the body */
         body { 
             background: #2F3E46; 
             margin: 0;
@@ -17,16 +19,7 @@
             flex-direction: column;
         }
 
-        .form-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-            max-width: 300px;
-            margin: 0 auto;
-            position: relative;
-        }
-
+        /* Styles for the main content wrapper */
         .content-wrapper {
             flex: 1;
             position: relative;
@@ -37,6 +30,7 @@
             justify-content: center;
         }
 
+        /* Styles for the mountains background image container */
         .mountains-container {
             position: absolute;
             bottom: 0;
@@ -51,16 +45,7 @@
             display: block;
         }
 
-        .login-link {
-            color: #84A98C;
-            font-size: 11px;
-            font-family: Lufga;
-            font-weight: 300;
-            background: transparent;
-            word-wrap: break-word;
-            text-decoration: none;
-        }
-
+        /* Typography styles */
         .trip-track {
             color: #CAD2C5; 
             font-size: 40px; 
@@ -72,246 +57,7 @@
             top: 0;
         }
 
-        .trip-name {
-            color: #84A98C;
-            width: 215px; 
-            height: 30px; 
-            background: #E7EFEC; 
-            border-radius: 25px;
-            font-size: 15px;
-            font-family: Abel;
-            font-weight: 400;
-            word-wrap: break-word;
-            border: none;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.10) inset;
-        }   
-
-        .create-event {
-            color: #ffffff;
-            font-size: 16px;
-            font-family: Lufga;
-            font-weight: 300;
-            background: transparent;
-            word-wrap: break-word;
-        }
-
-        form {
-            display: contents;
-            flex-direction: column;
-            align-items: center;
-            z-index: 2;
-        }
-
-        label {
-            display: block;
-            margin-top: 10px;
-            text-align: center;
-        }
-
-        input[type="text"], input[type="date"], textarea {
-            width: 215px;
-            padding: 5px;
-            margin-top: 5px;
-            height: 30px; 
-            background: #E7EFEC;
-            border-radius: 25px;
-            color: #84A98C; 
-            font-size: 15px; 
-            font-family: Abel; 
-            font-weight: 400; 
-            word-wrap: break-word;
-            z-index: 10; 
-            border: none;
-        }
-
-        button {
-            width: 175px; 
-            height: 30px;  
-            background: #84A98C; 
-            box-shadow: 5px 4px 4px rgba(0, 0, 0, 0.25); 
-            border-radius: 90px;
-            text-align: center; 
-            color: white; 
-            font-size: 16px; 
-            font-family: Lufga; 
-            font-weight: 300; 
-            word-wrap: break-word;
-            z-index: 5;
-            margin-top: 20px;
-            margin-bottom: 100px;
-            border: none;
-            
-        }
-
-        .errorlist {
-            color: red;
-            list-style-type: none;
-            padding: 0;
-            text-align: center;
-            font-family: Lufga;
-        }
-
-        .dropdown {
-            width: 75%;
-            margin-bottom: 5px;
-        }
-
-        .dropdown select {
-            display: none;
-            z-index: 1;
-        }
-
-        .dropdown-btn {
-            background-color: #84A98C;
-            color: white;
-            padding: 12px;
-            border-radius: 20px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 14px;
-            font-family: Lufga;
-            z-index: 1;
-        }
-
-        .dropdown-content {
-            /* display: none;
-            position: absolute; */
-            background-color: #52796F;
-            /* width: 100%; */
-            border-radius: 10px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-            /* z-index: 1; */
-            margin-top: 5px;
-            /* overflow: ; */
-            max-height: 300px;
-            font-family: Lufga;
-        }
-
-        .dropdown-content a {
-            color: white;
-            padding: 12px;
-            text-decoration: none;
-            display: block;
-            font-size: 14px;
-            font-family: Lufga;
-            z-index: 1;
-        }
-
-        .dropdown-content a:hover {
-            background-color: #2F3E46;
-            z-index: 1;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-            font-family: Lufga;
-            z-index: 1;
-        }
-
-        .dropdown-btn:after {
-            content: '\25BC';
-            font-size: 0.7em;
-            margin-left: 5px;
-            font-family: Lufga;
-            z-index: 1;
-        }
-
-        .icon {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            margin-right: 10px;
-            background-size: contain;
-            background-repeat: no-repeat;
-            vertical-align: middle;
-        }
-
-        .submitted-data {
-            width: 100%;
-            max-width: 100px;
-            color: #ffffff;
-            font-size: 16px;
-            font-family: Lufga;
-            font-weight: 300;
-            word-wrap: break-word;
-            margin-bottom: 10px;
-            z-index: 10;
-            /* background: rgba(47, 62, 70, 0.8); */
-            /* padding: 20px; */
-            list-style-type: none;
-            top: 5vh;
-            /* position: absolute; */
-            /* border-radius: 15px; */
-            /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
-        }
-
-        .submitted-data h3 {
-            color: #ffffff;
-            font-size: 24px;
-            /* margin-bottom: 15px; */
-            text-align: center;
-            font-family: Lufga;
-        }
-
-        .details-container {
-            display: flex;
-            justify-content: space-between;
-            top: 5vh;
-        }
-
-        .details-column {
-            width: 48%;
-        }
-
-        .submitted-data strong {
-            color: #ffffff;
-            display: block;
-            /* margin-bottom: 10px; */
-            font-size: 18px;
-            font-family: Lufga;
-        }
-
-        .submitted-data ul {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            list-style-type: none;
-            padding-left: 0;
-            margin: 0;
-        }
-
-        .submitted-data li {
-            margin-bottom: 5px;
-            margin-top: 5px;
-            padding: 5px;
-            background: rgba(132, 169, 140, 0.1);
-            border-radius: 5px;
-            display: flex;
-            align-items: center;
-            justify-content: center;  /* Center the content horizontally */
-            font-family: Lufga;
-            color: #ffff;
-        }
-
-        .separator {
-            width: 50%;
-            display: block;
-            margin: 0 auto 10px auto;  /* Center the line horizontally */
-            fill: #84A98C;
-            opacity: 0.5;
-        }
-
-        #btnSave {
-            position: relative;
-            z-index: 10;
-            transition: margin-top 0.3s ease;
-        }
-        /* Your existing styles */
-
-        /* Additional styles for centering */
+        /* Styles for the center container holding main content */
         .center-container {
             display: flex;
             flex-direction: column;
@@ -323,19 +69,20 @@
             font-family: Lufga;
             font-weight: 300;
             word-wrap: break-word;
-            margin: 20px auto; /* Adjust as necessary */
+            margin: 20px auto;
             width: 100%;
-            max-width: 400px; /* Restrict maximum width */
+            max-width: 400px;
         }
 
         .center-container p {
-            margin-bottom: 40px; /* Adjust spacing between text and button */
+            margin-bottom: 40px;
         }
 
         .center-container a {
             text-decoration: none;
         }
 
+        /* Styles for the "Click here for details" button */
         .center-container button {
             width: 135px;
             height: 40px;
@@ -352,36 +99,39 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto; /* Center the button */
+            margin: 0 auto;
         }
-
     </style>
 </head>
 
 <body>
     <div class="content-wrapper">
+        <!-- Header section with title and decorative image -->
         <div>
             <div class="trip-track" style="font-size: 50px; width: 100%; height: auto; left: 13%; top: 3vh; position: absolute; z-index:-1;">Create New Trip</div>
-            <img style="width: 115%; height: auto; right: 8vw; top: 0vh; position: relative; z-index:-1;" src="{% static 'PlaneTrip.svg' %}" alt="Clouds" />
+            <img style="width: 115%; height: auto; right: 8vw; top: 0vh; position: relative; z-index:-1;" src="{% static 'PlaneTrip.svg' %}" alt="Decorative plane image" />
         </div>     
         
+        <!-- Main content container -->
         <div class="center-container">
-            <p>A guide to what is needed if you are wishing to leave or enter a country. When you’re travelling overseas, you need to know what documentation is necessary for you to start your holiday, which may require mounths of planning in ahead.</p>
-            <div><img src="{% static 'docFun.svg' %}"/></div>
-            <a href="https://usa.embassy.gov.au/travel-australia">
-                <button>Click here for details</button>
+            <p>A guide to what is needed if you are wishing to leave or enter a country. When you're travelling overseas, you need to know what documentation is necessary for you to start your holiday, which may require months of planning ahead.</p>
+            <div><img src="{% static 'docFun.svg' %}" alt="Document fun illustration"/></div>
+            <a class="docLink" href="https://usa.embassy.gov.au/travel-australia">
+                <button class="btnDocInfo">Click here for details</button>
             </a>
         </div>
 
+        <!-- Background mountains image -->
         <div class="mountains-container">
-            <img class="mountains-image" src="{% static 'bckBottom.svg' %}" alt="Mountains" />
+            <img class="mountains-image" src="{% static 'bckBottom.svg' %}" alt="Decorative mountains background" />
         </div>
     
+        <!-- Navigation buttons -->
         <a href="{% url 'logout' %}" style="position: absolute; top: 6vh; right: 6vw; z-index: 2;">
-            <img style="width: calc(1800px+(2400-1800)*((100vw - 500px)/(1920-500))); height: 30px;" src="{% static 'Logout.svg' %}" alt="Logo" />
+            <img style="width: calc(1800px+(2400-1800)*((100vw - 500px)/(1920-500))); height: 30px;" src="{% static 'Logout.svg' %}" alt="Logout button" />
         </a>
         <a href="{% url 'createButton' %}" style="position: absolute; top: 6vh; left: 6vw; z-index: 2;">
-            <img style="width: calc(1800px+(2400-1800)*((100vw - 500px)/(1920-500))); height: 30px;" src="{% static 'Return.svg' %}" alt="Logo" />
+            <img style="width: calc(1800px+(2400-1800)*((100vw - 500px)/(1920-500))); height: 30px;" src="{% static 'Return.svg' %}" alt="Return button" />
         </a>
     </div>
 </body>
