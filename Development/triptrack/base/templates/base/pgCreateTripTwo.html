@@ -5,9 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Event</title>
+    <!-- Google Fonts imports -->
     <link href="https://fonts.googleapis.com/css2?family=Abel&family=Lobster+Two&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lufga:wght@300&display=swap" rel="stylesheet">
     <style>
+        /* Base styles for the body */
         body { 
             background: #2F3E46; 
             margin: 0;
@@ -17,6 +19,7 @@
             flex-direction: column;
         }
 
+        /* Styles for the form container */
         .form-container {
             display: flex;
             flex-direction: column;
@@ -27,6 +30,7 @@
             position: relative;
         }
 
+        /* Styles for the main content wrapper */
         .content-wrapper {
             flex: 1;
             position: relative;
@@ -37,6 +41,7 @@
             justify-content: center;
         }
 
+        /* Styles for the mountains background image container */
         .mountains-container {
             position: absolute;
             bottom: 0;
@@ -51,16 +56,7 @@
             display: block;
         }
 
-        .login-link {
-            color: #84A98C;
-            font-size: 11px;
-            font-family: Lufga;
-            font-weight: 300;
-            background: transparent;
-            word-wrap: break-word;
-            text-decoration: none;
-        }
-
+        /* Typography styles */
         .trip-track {
             color: #CAD2C5; 
             font-size: 40px; 
@@ -72,20 +68,6 @@
             top: 0;
         }
 
-        .trip-name {
-            color: #84A98C;
-            width: 215px; 
-            height: 30px; 
-            background: #E7EFEC; 
-            border-radius: 25px;
-            font-size: 15px;
-            font-family: Abel;
-            font-weight: 400;
-            word-wrap: break-word;
-            border: none;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.10) inset;
-        }   
-
         .create-event {
             color: #ffffff;
             font-size: 16px;
@@ -95,6 +77,7 @@
             word-wrap: break-word;
         }
 
+        /* Form styles */
         form {
             display: contents;
             flex-direction: column;
@@ -140,9 +123,9 @@
             margin-top: 20px;
             margin-bottom: 100px;
             border: none;
-            
         }
 
+        /* Error message styles */
         .errorlist {
             color: red;
             list-style-type: none;
@@ -151,17 +134,18 @@
             font-family: Lufga;
         }
 
-        .dropdown {
+        /* Dropdown styles for transportation selection */
+        .dropTran {
             width: 75%;
             margin-bottom: 5px;
         }
 
-        .dropdown select {
+        .dropTran select {
             display: none;
             z-index: 1;
         }
 
-        .dropdown-btn {
+        .dropTran-btn {
             background-color: #84A98C;
             color: white;
             padding: 12px;
@@ -175,21 +159,16 @@
             z-index: 1;
         }
 
-        .dropdown-content {
-            /* display: none;
-            position: absolute; */
+        .dropTran-content {
             background-color: #52796F;
-            /* width: 100%; */
             border-radius: 10px;
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-            /* z-index: 1; */
             margin-top: 5px;
-            /* overflow: ; */
             max-height: 300px;
             font-family: Lufga;
         }
 
-        .dropdown-content a {
+        .dropTran-content a {
             color: white;
             padding: 12px;
             text-decoration: none;
@@ -199,18 +178,18 @@
             z-index: 1;
         }
 
-        .dropdown-content a:hover {
+        .dropTran-content a:hover {
             background-color: #2F3E46;
             z-index: 1;
         }
 
-        .dropdown:hover .dropdown-content {
+        .dropTran:hover .dropTran-content {
             display: block;
             font-family: Lufga;
             z-index: 1;
         }
 
-        .dropdown-btn:after {
+        .dropTran-btn:after {
             content: '\25BC';
             font-size: 0.7em;
             margin-left: 5px;
@@ -218,6 +197,7 @@
             z-index: 1;
         }
 
+        /* Icon styles for transportation options */
         .icon {
             display: inline-block;
             width: 20px;
@@ -228,6 +208,7 @@
             vertical-align: middle;
         }
 
+        /* Styles for displaying submitted data */
         .submitted-data {
             width: 100%;
             max-width: 100px;
@@ -238,19 +219,13 @@
             word-wrap: break-word;
             margin-bottom: 10px;
             z-index: 10;
-            /* background: rgba(47, 62, 70, 0.8); */
-            /* padding: 20px; */
             list-style-type: none;
             top: 5vh;
-            /* position: absolute; */
-            /* border-radius: 15px; */
-            /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
         }
 
         .submitted-data h3 {
             color: #ffffff;
             font-size: 24px;
-            /* margin-bottom: 15px; */
             text-align: center;
             font-family: Lufga;
         }
@@ -268,7 +243,6 @@
         .submitted-data strong {
             color: #ffffff;
             display: block;
-            /* margin-bottom: 10px; */
             font-size: 18px;
             font-family: Lufga;
         }
@@ -291,7 +265,7 @@
             border-radius: 5px;
             display: flex;
             align-items: center;
-            justify-content: center;  /* Center the content horizontally */
+            justify-content: center;  
             font-family: Lufga;
             color: #ffff;
         }
@@ -299,7 +273,7 @@
         .separator {
             width: 50%;
             display: block;
-            margin: 0 auto 10px auto;  /* Center the line horizontally */
+            margin: 0 auto 10px auto;  
             fill: #84A98C;
             opacity: 0.5;
         }
@@ -309,18 +283,18 @@
             z-index: 10;
             transition: margin-top 0.3s ease;
         }
-
     </style>
 </head>
 
 <body>
     <div class="content-wrapper">
-
+        <!-- Header section with title and decorative image -->
         <div>
             <div class="trip-track" style="font-size: 50px; width: 100%; height: auto; left: 13%; top: 3vh; position: absolute; z-index:-1;">Create New Trip</div>
             <img style="width: 115%; height: auto; right: 8vw; top: 3vh; position: relative; z-index:-1;" src="{% static 'PlaneTrip.svg' %}" alt="Clouds" />
         </div>       
 
+        <!-- Display submitted trip legs if available -->
         {% if legs %}
         <div class="submitted-data" style="z-index:1">
             <div class="details-container">
@@ -330,7 +304,7 @@
 
                         {% for leg in legs %}
                             <li>
-                                {{ leg.destination.name }}
+                                {{ leg.strLoc.strLoc }}
                             </li>
                             
                             {% if not forloop.last %}
@@ -341,10 +315,9 @@
                 </div>
                 <div class="details-column">
                     <ul>
-                        
                         {% for leg in legs %}
                             <li>
-                                {{ leg.transport.name }}
+                                {{ leg.strTran.strTran }}
                             </li>
                             
                             {% if not forloop.last %}
@@ -359,30 +332,34 @@
             <p>No legs found for this trip.</p>
         {% endif %}
 
+        <!-- Form for creating a new event -->
         <form action="" method="POST">
+            <!-- This protects the site form cross site request forgery (CSRF) -->
             {% csrf_token %}
             
             {{ form.non_field_errors }}
         
             <div class="form-container">
-                <div class="input-group">
-                    <label class="create-event" for="{{ form.destination.id_for_label }}">Enter Trip Location:</label>
-                    {{ form.destination }}
-                    {{ form.destination.errors }}
+                <!-- Input for trip location -->
+                <div class="inputLoc">
+                    <label class="create-event" for="{{ form.strLoc.id_for_label }}">Enter Trip Location:</label>
+                    {{ form.strLoc }}
+                    {{ form.strLoc.errors }}
                 </div>
         
-                <div class="dropdown">
-                    <label for="form.transport.id_for_label">
-                        <div class="dropdown-btn">
+                <!-- Dropdown for transport selection -->
+                <div class="dropTran">
+                    <label for="form.strTran.id_for_label">
+                        <div class="dropTran-btn">
                             <span>Choice of Transport</span>
                         </div>
-                        <select name="transport" id="transport">
-                            {% for value, choice in form.fields.transport.choices %}
+                        <select name="strTran" id="strTran">
+                            {% for value, choice in form.fields.strTran.choices %}
                                 <option value="{{ value }}">{{ choice }}</option>
                             {% endfor %}
                         </select>
-                        <div class="dropdown-content">
-                            {% for value, choice in form.fields.transport.choices %}
+                        <div class="dropTran-content">
+                            {% for value, choice in form.fields.strTran.choices %}
                                 <a href="#" data-value="{{ value }}">
                                     <div>
                                         <div class="icon">
@@ -396,16 +373,13 @@
                                             <img src="{% static 'Bicycle.svg' %}" width="100%" height="100%">
                                             {% endif %}
                                         </div>
-                                        
-                                            {{ choice }}
-                                        
+                                        {{ choice }}
                                     </div>
-                                    
                                 </a>
                             {% endfor %}
                         </div>
-                        {{ form.transport }}
-                        {{ form.transport.errors }}
+                        {{ form.strTran }}
+                        {{ form.strTran.errors }}
                     </label>
                 </div>
         
@@ -413,53 +387,57 @@
             </div>
         </form>
         
+        <!-- Background mountains image -->
         <div class="mountains-container">
             <img class="mountains-image" src="{% static 'bckBottom.svg' %}" alt="Mountains" />
         </div>
     
+        <!-- Navigation buttons -->
         <a href="{% url 'logout' %}" style="position: absolute; top: 6vh; right: 6vw; z-index: 2;">
-            <img style="width: calc(1800px+(2400-1800)*((100vw - 500px)/(1920-500))); height: 30px;" src="{% static 'Logout.svg' %}" alt="Logo" />
+            <img style="width: calc(1800px+(2400-1800)*((100vw - 500px)/(1920-500))); height: 30px;" src="{% static 'Logout.svg' %}" alt="Logout" />
         </a>
         <a href="{% url 'createButton' %}" style="position: absolute; top: 6vh; left: 6vw; z-index: 2;">
-            <img style="width: calc(1800px+(2400-1800)*((100vw - 500px)/(1920-500))); height: 30px;" src="{% static 'Return.svg' %}" alt="Logo" />
+            <img style="width: calc(1800px+(2400-1800)*((100vw - 500px)/(1920-500))); height: 30px;" src="{% static 'Return.svg' %}" alt="Return" />
         </a>
     </div>
 
     <script>
-        
+        // JavaScript for handling the custom dropdown functionality
         document.addEventListener('DOMContentLoaded', function() {
-        const select = document.querySelector('.dropdown select');
-        const btn = document.querySelector('.dropdown-btn');
-        const options = document.querySelectorAll('.dropdown-content a');
-        const dropdownContent = document.querySelector('.dropdown-content');
-        const btnSave = document.getElementById('btnSave');
+            const select = document.querySelector('.dropTran select');
+            const btn = document.querySelector('.dropTran-btn');
+            const options = document.querySelectorAll('.dropTran-content a');
+            const dropdownContent = document.querySelector('.dropTran-content');
+            const btnSave = document.getElementById('btnSave');
 
-        // Set initial text of button to match selected option
-        btn.querySelector('span').textContent = select.options[select.selectedIndex].textContent;
+            // Set initial text of dropdown button
+            btn.querySelector('span').textContent = select.options[select.selectedIndex].textContent;
 
-        function adjustButtonPosition() {
-            const dropdownRect = dropdownContent.getBoundingClientRect();
-            const buttonRect = btnSave.getBoundingClientRect();
-            const topOffset = dropdownRect.bottom - buttonRect.top + 20; // 20px extra space
-            
-            if (dropdownContent.style.display === 'block' && topOffset > 0) {
-                btnSave.style.marginTop = `${topOffset}px`;
-            } else {
-                btnSave.style.marginTop = '20px'; // Default margin
+            // Function to adjust the position of the save button based on dropdown visibility
+            function adjustButtonPosition() {
+                const dropdownRect = dropdownContent.getBoundingClientRect();
+                const buttonRect = btnSave.getBoundingClientRect();
+                const topOffset = dropdownRect.bottom - buttonRect.top + 20; 
+                
+                if (dropdownContent.style.display === 'block' && topOffset > 0) {
+                    btnSave.style.marginTop = `${topOffset}px`;
+                } else {
+                    btnSave.style.marginTop = '20px'; 
+                }
             }
-        }
 
-        options.forEach(option => {
-            option.addEventListener('click', function(e) {
-                e.preventDefault();
-                const value = this.getAttribute('data-value');
-                const text = this.textContent;
-                
-                btn.querySelector('span').textContent = text;
-                select.value = value;
-                
-                const event = new Event('change', { bubbles: true });
-                select.dispatchEvent(event);
+            // Event listeners for dropdown options
+            options.forEach(option => {
+                option.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const value = this.getAttribute('data-value');
+                    const text = this.textContent;
+                    
+                    btn.querySelector('span').textContent = text;
+                    select.value = value;
+                    
+                    const event = new Event('change', { bubbles: true });
+                    select.dispatchEvent(event);
                 
                 dropdownContent.style.display = 'none';
                 adjustButtonPosition();
@@ -467,7 +445,7 @@
         });
 
         document.addEventListener('click', function(e) {
-            if (!e.target.closest('.dropdown')) {
+            if (!e.target.closest('.dropTran')) {
                 dropdownContent.style.display = 'none';
                 adjustButtonPosition();
             }
@@ -479,10 +457,8 @@
             adjustButtonPosition();
         });
 
-        // Adjust button position on window resize
         window.addEventListener('resize', adjustButtonPosition);
 
-        // Initial adjustment
         adjustButtonPosition();
     });
         

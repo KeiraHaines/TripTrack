@@ -159,12 +159,13 @@
 
         <!-- Event Creation Form -->
         <form action="" method="POST">
+            <!-- This protects the site form cross site request forgery (CSRF) -->
             {% csrf_token %}
             
             {{ form.non_field_errors }}
         
             <!-- Trip Name Input -->
-            <div>
+            <div class="inputTripName">
                 <label class="create-event" for="{{ form.strTripName.id_for_label }}">Trip Name:</label>
                 {{ form.strTripName }}
                 {{ form.strTripName.errors }}
@@ -172,21 +173,21 @@
             </div>
     
             <!-- Start Date Input -->
-            <div>
+            <div class="inputStartDate">
                 <label class="create-event" for="{{ form.start_date.id_for_label }}">Start Date:</label>
                 {{ form.intStartDate }}
                 {{ form.intStartDate.errors }}
             </div>
     
             <!-- End Date Input -->
-            <div>
+            <div class="inputEndDate">
                 <label class="create-event" for="{{ form.end_date.id_for_label }}">End Date:</label>
                 {{ form.intEndDate }}
                 {{ form.intEndDate.errors }}
             </div>
     
             <!-- Submit Button -->
-            <button type="submit">Create Event</button>
+            <button class="btnSave" type="submit">Create Event</button>
         </form>
         
         <!-- Mountains Background -->

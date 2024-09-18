@@ -6,11 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TripTrack Home</title>
 
+    <!-- Google Fonts imports -->
     <link href="https://fonts.googleapis.com/css2?family=Abel&family=Lobster+Two&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lufga:wght@300&display=swap" rel="stylesheet">
+    <!-- Swiper.js CSS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 
     <style>
+        /* Base styles for the body */
         body { 
             background: #2F3E46; 
             margin: 0;
@@ -20,12 +23,14 @@
             flex-direction: column;
         }
 
+        /* Swiper container styles */
         .swiper-container {
             height: 100vh;
             width: 100%;
             overflow: hidden;
         }
 
+        /* Swiper slide styles */
         .swiper-slide {
             display: flex;
             align-items: center;
@@ -35,6 +40,7 @@
             height: 100%;
         }
 
+        /* Content wrapper styles */
         .content-wrapper {
             position: absolute;
             top: 0;
@@ -42,14 +48,15 @@
             width: 100%;
             height: 100%;
             z-index: 2;
-            pointer-events: none; /* Prevent interaction with the content wrapper */
+            pointer-events: none;
         }
 
+        /* Enable pointer events for links within the content wrapper */
         .content-wrapper a {
-            pointer-events: auto; /* Re-enable pointer events for links */
+            pointer-events: auto;
         }
 
-
+        /* Styles for the mountains background image container */
         .mountains-container {
             position: absolute;
             bottom: 0;
@@ -64,6 +71,7 @@
             display: block;
         }
 
+        /* Typography styles */
         .login-link {
             color: #84A98C;
             font-size: 11px;
@@ -86,6 +94,7 @@
             z-index: 2;
         }
 
+        /* Styles for trip name input (not used in this HTML) */
         .trip-name {
             color: #84A98C;
             width: 215px; 
@@ -100,40 +109,49 @@
             border: none;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.10) inset;
         }
-        
     </style>
 </head>
 
 <body>
+    <!-- Swiper container for page sliding functionality -->
     <div class="swiper-container">
         <div class="swiper-wrapper">
             <div class="swiper-slide">
+                <!-- Content for the first slide (home page) -->
             </div>
             <div class="swiper-slide">Page 2</div>
         </div>
+        <!-- Content wrapper for static elements -->
         <div class="content-wrapper">
+            <!-- Top cloud image -->
             <div>
                 <img style="width: 100%; height: auto; left: 0; top: 3vh; position: absolute" src="{% static 'bckTop.svg' %}" alt="Clouds" />
             </div>
 
+            <!-- TripTrack logo/title -->
             <div class="trip-track">TripTrack</div>
             
+            <!-- Bottom mountains image -->
             <div class="mountains-container">
                 <img class="mountains-image" src="{% static 'bckBottom.svg' %}" alt="Mountains" />
             </div>
         
+            <!-- Create Trip button -->
             <a href="{% url 'createTripOne' %}">
                 <img style="width: calc(1800px+(2400-1800)*((100vw - 500px)/(1920-500))); height: 250px; right: 23vw; bottom: 30vh; position: absolute; z-index: 99;" src="{% static 'btnCreateTrip.svg' %}" alt="Create Trip Button" />
             </a>
 
+            <!-- Logout button -->
             <a href="{% url 'logout' %}">
                 <img style="width: calc(1800px+(2400-1800)*((100vw - 500px)/(1920-500))); height: 30px; left: 6vw; top: 6vh; position: absolute; z-index: 99;" src="{% static 'Logout.svg' %}" alt="Logout Button" />
             </a>
         </div>
     </div>
 
+    <!-- Swiper.js library -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
+        // Initialize Swiper
         var swiper = new Swiper('.swiper-container', {
             pagination: {
                 el: '.swiper-pagination',
@@ -143,8 +161,10 @@
             threshold: 20,
         });
 
+        // Add event listener for slide change
         swiper.on('slideChange', function () {
             console.log(swiper.activeIndex)
+            // Redirect to page1 when swiping to the second slide
             if (swiper.activeIndex === 1) {
                 window.location.href = "{% url 'page1' %}";
             }
